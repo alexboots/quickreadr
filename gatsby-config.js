@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Read Quickr | Speed Reader',
+    title: 'Read Quickr: Speed Reader',
     description: 'Help read long articles faster and keep focus, speed reading, speed read, speed reader.',
   },
   plugins: [

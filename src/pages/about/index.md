@@ -5,3 +5,4 @@ title: About our values
 ---
 ### Speed reader
 By Alex Hays
+
