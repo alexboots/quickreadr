@@ -10,8 +10,9 @@ import {
   Text,
   Heading,
   Grid,
+  Meter,
 } from 'grommet'
-console.log('useInterval', useInterval)
+
 const SpeedRead = (props) => {
   const { pastedText } = props
 
@@ -108,7 +109,16 @@ const SpeedRead = (props) => {
             </Text>
 
             <Heading> { displayWord } </Heading>
+
           </Box>
+            <Meter
+              size='full'
+              thickness='xsmall'
+              background='light-6'
+              style={{ position: 'absolute', bottom: '0', left: '0', right: '0' }}
+              values={[{ value: count / wordCount * 100, color: 'dark-6', }]}
+              aria-label="meter"
+            />
         </Layer>
       }
     </Grid>
