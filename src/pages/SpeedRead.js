@@ -13,8 +13,9 @@ import {
   Meter,
 } from 'grommet'
 
+const defaultDelay = 300;
 const SpeedRead = (props) => {
-  const { pastedText, defaultDelay } = props
+  const { pastedText } = props
 
   let [count, setCount] = useState(0)
   let [displayWord, setDisplayWord] = useState('')
@@ -22,6 +23,7 @@ const SpeedRead = (props) => {
   let [isRunning, setIsRunning] = useState(false)
 
   let [delay, setDelay] = useState(defaultDelay)
+  let [userDelay, setUserDelay] = useState(defaultDelay)
 
   const pastedTextArray = pastedText ? pastedText.split(' ') : '';
   const wordCount = pastedTextArray.length
@@ -30,6 +32,7 @@ const SpeedRead = (props) => {
     const input = Number(e.target.value)
     if(isNaN(input) || input > 100000) return
     setDelay(input)
+    setUserDelay(input)
   }
 
   useInterval(() => {
@@ -42,8 +45,8 @@ const SpeedRead = (props) => {
         setDelay(delay * 2)
       } else if(word.split('').pop() === '.' || word.length > 7) {
         setDelay(delay + 100)
-      } else if(delay !== defaultDelay) {
-        setDelay(defaultDelay)
+      } else {
+        setDelay(userDelay)
       }
 
     } else {

@@ -11,7 +11,8 @@ import {
 } from 'grommet'
 
 const defaultDelay = 300
-const IndexPage = () => {
+const IndexPage = (props) => {
+  console.log('re-render');
   let [pastedText, setPastedText] = useState('')
 
   function handlePasteText(e) {
