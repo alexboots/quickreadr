@@ -14,14 +14,13 @@ import {
 } from 'grommet'
 
 const SpeedRead = (props) => {
-  const { pastedText } = props
+  const { pastedText, defaultDelay } = props
 
   let [count, setCount] = useState(0)
   let [displayWord, setDisplayWord] = useState('')
   let [showModal, setShowModal] = useState(false)
   let [isRunning, setIsRunning] = useState(false)
 
-  const defaultDelay = 300
   let [delay, setDelay] = useState(defaultDelay)
 
   const pastedTextArray = pastedText ? pastedText.split(' ') : '';

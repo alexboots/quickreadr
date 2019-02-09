@@ -10,6 +10,7 @@ import {
   TextArea,
 } from 'grommet'
 
+const defaultDelay = 300
 const IndexPage = () => {
   let [pastedText, setPastedText] = useState('')
 
@@ -41,7 +42,7 @@ const IndexPage = () => {
           </Box>
 
           <Box gridArea='btn-read'>
-            <SpeedRead pastedText={pastedText} />
+            <SpeedRead defaultDelay={defaultDelay} pastedText={pastedText} />
           </Box>
 
           <Box
