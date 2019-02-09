@@ -24,7 +24,7 @@ const SpeedRead = (props) => {
   const defaultDelay = 300
   let [delay, setDelay] = useState(defaultDelay)
 
-  const pastedTextArray = pastedText.split(' ');
+  const pastedTextArray = pastedText ? pastedText.split(' ') : '';
   const wordCount = pastedTextArray.length
 
   function handleDelayChange(e) {
@@ -76,7 +76,7 @@ const SpeedRead = (props) => {
       gap='medium'
     >
       <Button
-        disabled={pastedText.length === 0}
+        disabled={pastedTextArray.length === 0}
         alignSelf='center'
         label="Read"
         onClick={() => handleRead()}
