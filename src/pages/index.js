@@ -12,15 +12,7 @@ import {
 } from 'grommet'
 
 const IndexPage = () => {
-  let [count, setCount] = useState(0);
-  let [delay, setDelay] = useState(300);
-  let [pastedText, setPastedText] = useState('');
-
-  function handleDelayChange(e) {
-    const input = Number(e.target.value)
-    if(isNaN(input) || input > 100000) return
-    setDelay(input)
-  }
+  let [pastedText, setPastedText] = useState('')
 
   function handlePasteText(e) {
     setPastedText(e.target.value)
@@ -53,11 +45,7 @@ const IndexPage = () => {
             height='xxsmall'
             justify='center'
            >
-            <SpeedRead
-              handleDelayChange={handleDelayChange}
-              delay={delay}
-              pastedText={pastedText}
-            />
+            <SpeedRead pastedText={pastedText} />
           </Box>
 
           <Box
