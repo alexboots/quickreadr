@@ -18,7 +18,9 @@ const quickreadrTheme = {
 };
 
 ReactGA.initialize('UA-134221585-1')
-ReactGA.pageview(window.location.pathname + window.location.search)
+if(window) {
+  ReactGA.pageview(window.location.pathname + window.location.search)
+}
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
