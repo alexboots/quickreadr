@@ -1,13 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/Layout'
-import Settings from './Settings'
 import SpeedRead from './SpeedRead'
 
 import {
   Grid,
   Heading,
   Box,
-  Button,
   Text,
   TextArea,
 } from 'grommet'
@@ -39,7 +37,7 @@ const IndexPage = () => {
             margin={{ bottom: 'small' }}
           >
             <Heading level='2' style={{ marginBottom: '0px' }}>Read Quickr</Heading>
-            <Text alignSelf='end' size='xsmall'>by <a target='_blank' href='https://twitter.com/alexboots'>@alexboots</a></Text>
+            <Text alignSelf='end' size='xsmall'>by <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/alexboots'>@alexboots</a></Text>
           </Box>
 
           <Box gridArea='btn-read'>

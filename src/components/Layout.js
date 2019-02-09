@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import { Grommet } from 'grommet'
+import ReactGA from 'react-ga';
 
 const quickreadrTheme = {
   global: {
@@ -16,6 +17,8 @@ const quickreadrTheme = {
   }
 };
 
+ReactGA.initialize('UA-134221585-1')
+ReactGA.pageview(window.location.pathname + window.location.search)
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
