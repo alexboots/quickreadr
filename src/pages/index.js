@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Layout from '../components/Layout'
-import ms from 'pretty-ms';
+import Settings from './Settings'
+import SpeedRead from './SpeedRead'
 
 import {
   Grid,
@@ -8,40 +9,12 @@ import {
   Box,
   Button,
   TextArea,
-  TextInput,
 } from 'grommet'
-
-
-
-function useInterval(callback, delay) {
-  const savedCallback = useRef();
-
-  // Remember the latest callback.
-  useEffect(() => {
-    savedCallback.current = callback;
-  });
-
-  // Set up the interval.
-  useEffect(() => {
-    function tick() {
-      savedCallback.current();
-    }
-    if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
-    }
-  }, [delay]);
-}
 
 const IndexPage = () => {
   let [count, setCount] = useState(0);
   let [delay, setDelay] = useState(300);
   let [pastedText, setPastedText] = useState('');
-
-  useInterval(() => {
-    // Your custom logic here
-    setCount(count + 1);
-  }, delay);
 
   function handleDelayChange(e) {
     const input = Number(e.target.value)
@@ -49,50 +22,58 @@ const IndexPage = () => {
     setDelay(input)
   }
 
+  function handlePasteText(e) {
+    setPastedText(e.target.value)
+  }
+
   return (
       <Layout>
         <Grid
           areas={[
             { name: 'header', start: [0, 0], end: [1, 0] },
-            { name: 'settings', start: [0, 1], end: [1, 1] },
-            { name: 'btn-read', start: [0, 2], end: [1, 2] },
-            { name: 'main', start: [0, 3], end: [1, 3] },
+            { name: 'btn-read', start: [0, 1], end: [1, 1] },
+            { name: 'main', start: [0, 2], end: [1, 2] },
           ]}
           columns={['small']}
-          rows={['xsmall', 'xsmall', 'xxsmall','small']}
-          gap='small'
+          fill
+          rows={['xsmall', 'xxsmall','small']}
+          gap='xxsmall'
+          justify='center'
         >
           <Box
-            a11yTitle="Screen reader text"
-            background='accent-1'
-            gridArea='header'>
-            <Heading alignSelf='center'>Speed Readr</Heading>
+            a11yTitle="Speed Readr"
+            gridArea='header'
+            align='center'
+          >
+            <Heading>Speed Readr</Heading>
           </Box>
+
           <Box
-            background='accent-3'
-            gridArea='settings'
-            fill
-            align="center"
-            justify="center"
+            gridArea='btn-read'
+            height='xxsmall'
+            justify='center'
+            background='red'
            >
-              <Box width="xsmall">
-                <TextInput
-                  value={delay}
-                  onChange={(e) => handleDelayChange(e) }
-                />
-              </Box>
-          </Box>
-          <Box gridArea='btn-read' background='accent-2'>
-             <Button alignSelf='center' label="Read"  onClick={() => {}} />
-          </Box>
-          <Box gridArea='main' background='brand'>
-            <h1>{count}</h1>
-            <TextArea
-              fill={true}
-              value={pastedText}
-              placeholder='Paste text here'
-              onChange={(e) => setPastedText(e)}
+            <SpeedRead
+              handleDelayChange={handleDelayChange}
+              delay={delay}
+              pastedText={pastedText}
             />
+          </Box>
+
+          <Box
+            background='red'
+            gridArea='main'
+            align='center'
+          >
+            <Box width='large' height='medium'>
+              <TextArea
+                fill={true}
+                value={pastedText}
+                placeholder='Paste text here'
+                onChange={(e) => handlePasteText(e)}
+              />
+             </Box>
           </Box>
         </Grid>
       </Layout>
