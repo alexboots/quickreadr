@@ -44,7 +44,8 @@ const SpeedRead = (props) => {
       if(word.includes('-') || word.includes('—')) {
         setDelay(delay * 2)
       } else if(word.split('').pop() === '.' || word.length > 7) {
-        setDelay(delay + 100)
+        setDelay(delay + Math.round(delay / 3))
+        console.log('delay', delay);
       } else {
         setDelay(userDelay)
       }

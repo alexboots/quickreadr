@@ -12,7 +12,6 @@ import {
 
 const defaultDelay = 300
 const IndexPage = (props) => {
-  console.log('re-render');
   let [pastedText, setPastedText] = useState('')
 
   function handlePasteText(e) {
