@@ -18,7 +18,7 @@ const quickreadrTheme = {
 };
 
 ReactGA.initialize('UA-134221585-1')
-if(window) {
+if(typeof window !== 'undefined') {
   ReactGA.pageview(window.location.pathname + window.location.search)
 }
 
