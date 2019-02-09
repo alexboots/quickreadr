@@ -36,7 +36,7 @@ const IndexPage = () => {
           ]}
           columns={['small']}
           fill
-          rows={['xsmall', 'xxsmall','small']}
+          rows={['xsmall', 'xsmall','small']}
           gap='xxsmall'
           justify='center'
         >
@@ -45,14 +45,13 @@ const IndexPage = () => {
             gridArea='header'
             align='center'
           >
-            <Heading>Speed Readr</Heading>
+            <Heading level='2'>Read Quickr</Heading>
           </Box>
 
           <Box
             gridArea='btn-read'
             height='xxsmall'
             justify='center'
-            background='red'
            >
             <SpeedRead
               handleDelayChange={handleDelayChange}
@@ -62,7 +61,6 @@ const IndexPage = () => {
           </Box>
 
           <Box
-            background='red'
             gridArea='main'
             align='center'
           >
