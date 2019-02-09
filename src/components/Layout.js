@@ -1,6 +1,16 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby'
+import { Grommet } from 'grommet'
+
+const quickreadrTheme = {
+  global: {
+    font: {
+      family: 'Roboto Slab',
+    },
+  },
+};
+
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
@@ -33,7 +43,9 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
 
-        <div>{children}</div>
+        <Grommet theme={quickreadrTheme}>
+          {children}
+         </Grommet>
       </div>
     )}
   />
