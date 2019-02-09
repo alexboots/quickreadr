@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Settings from './Settings'
 import useInterval from '../hooks/use-interval'
 
-
 import {
   Box,
   Button,
