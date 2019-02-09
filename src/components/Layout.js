@@ -9,6 +9,11 @@ const quickreadrTheme = {
       family: 'Roboto Slab',
     },
   },
+  layer: {
+    overlay: {
+      background: "rgba(58, 58, 58, 1)"
+    }
+  }
 };
 
 

@@ -52,13 +52,14 @@ const SpeedRead = (props) => {
   }, isRunning ? delay : null)
 
   function handleRead () {
-    setDisplayWord('')
-    setShowModal(true)
+    setDisplayWord(pastedTextArray[0])
     setIsRunning(true)
+    setShowModal(true)
   }
 
   function onClose () {
     setShowModal(false)
+    finishedReading()
   }
 
   function finishedReading () {
@@ -68,9 +69,10 @@ const SpeedRead = (props) => {
 
   return(
     <Grid
+      alignContent='center'
+      align='center'
       columns={['xsmall', 'small']}
       gap='medium'
-      align='center'
     >
       <Button
         disabled={pastedText.length === 0}
@@ -80,32 +82,35 @@ const SpeedRead = (props) => {
       />
 
       <Settings delay={ delay } handleDelayChange={ handleDelayChange } />
+
       {showModal &&
         <Layer
           position="center"
           modal
+          size='full'
           onClickOutside={onClose}
           onEsc={onClose}
         >
           <Box
-            pad="medium"
+            pad="large"
             gap="small"
-            width="medium"
-              align="center"
-              justify="center"
+            width="large"
+            height="medium"
+            align="center"
+            justify="center"
+          >
+            <Text
+              color="black"
+              onClick={onClose}
+              style={{ cursor: 'pointer', position: 'fixed', top: '12px', right: '16px' }}
             >
-              <Text
-                color="black"
-                onClick={onClose}
-                style={{ cursor: 'pointer', position: 'fixed', top: '12px', right: '16px' }}
-              >
-                <strong>✖</strong>
-              </Text>
+              <strong>✖</strong>
+            </Text>
 
-              <Heading> { displayWord } </Heading>
-            </Box>
-          </Layer>
-        }
+            <Heading> { displayWord } </Heading>
+          </Box>
+        </Layer>
+      }
     </Grid>
   )
 }

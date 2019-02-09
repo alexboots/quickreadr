@@ -8,6 +8,7 @@ import {
   Heading,
   Box,
   Button,
+  Text,
   TextArea,
 } from 'grommet'
 
@@ -28,38 +29,34 @@ const IndexPage = () => {
           ]}
           columns={['small']}
           fill
-          rows={['xsmall', 'xsmall','small']}
+          rows={['flex', 'xsmall','small']}
           gap='xxsmall'
           justify='center'
         >
           <Box
             a11yTitle="Speed Readr"
             gridArea='header'
-            align='center'
+            margin={{ bottom: 'small' }}
           >
-            <Heading level='2'>Read Quickr</Heading>
+            <Heading level='2' style={{ marginBottom: '0px' }}>Read Quickr</Heading>
+            <Text alignSelf='end' size='xsmall'>by <a target='_blank' href='https://twitter.com/alexboots'>@alexboots</a></Text>
           </Box>
 
-          <Box
-            gridArea='btn-read'
-            height='xxsmall'
-            justify='center'
-           >
+          <Box gridArea='btn-read'>
             <SpeedRead pastedText={pastedText} />
           </Box>
 
           <Box
             gridArea='main'
-            align='center'
+            fill
+            height='medium'
           >
-            <Box width='large' height='medium'>
-              <TextArea
-                fill={true}
-                value={pastedText}
-                placeholder='Paste text here'
-                onChange={(e) => handlePasteText(e)}
-              />
-             </Box>
+            <TextArea
+              fill={true}
+              value={pastedText}
+              placeholder='Paste text here'
+              onChange={(e) => handlePasteText(e)}
+            />
           </Box>
         </Grid>
       </Layout>
