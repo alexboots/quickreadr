@@ -40,7 +40,7 @@ const SetingsComponent = (props) => {
       rows={['flex', 'flex', 'flex', 'flex', 'flux']}
       gap='small'
     >
-      <Box gridArea='input-readspead' style={{padding: '16px 10px 6px 10px' }}>
+      <Box gridArea='input-readspead' style={{padding: '16px 10px 0px 10px' }}>
         <TextInput
           value={userDelay}
           onChange={(e) => handleDelayChange(e) }
@@ -53,7 +53,7 @@ const SetingsComponent = (props) => {
         <Text size='medium'>Word Speed (ms)</Text>
       </Box>
 
-      <Box gridArea='input-speedup-small-words' style={{padding: '0 10px 6px 10px' }}>
+      <Box gridArea='input-speedup-small-words' style={{padding: '0 10px 0 10px' }}>
         <CheckBox
           label='Speed up small words'
           checked={speedUpSmallWords}
@@ -61,7 +61,7 @@ const SetingsComponent = (props) => {
         />
       </Box>
 
-      <Box gridArea='input-slowdown-long-words' style={{padding: '0 10px 6px 10px' }}>
+      <Box gridArea='input-slowdown-long-words' style={{padding: '0 10px 0 10px' }}>
         <CheckBox
           label='Slow longer words'
           checked={slowDownLongWords}
@@ -69,7 +69,7 @@ const SetingsComponent = (props) => {
         />
       </Box>
 
-      <Box gridArea='input-pause-after-period' style={{padding: '0 10px 6px 10px' }}>
+      <Box gridArea='input-pause-after-period' style={{padding: '0 10px 0 10px' }}>
         <CheckBox
           label="Slow after periods `.`"
           checked={pauseAfterPeriod}
