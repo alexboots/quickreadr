@@ -1,11 +1,19 @@
 # Read Quickr
 
-Speed reading site built with [React](https://reactjs.org/) + [Grommet](https://v2.grommet.io/)
+Speed reading site built with [React](https://reactjs.org/) + [gatsby](https://www.gatsbyjs.org/) + [Grommet](https://v2.grommet.io/)
 
 Live: https://readquickr.com/
 I bought the wrong url so thats why the repo is quickreadr and the url is readquickr
 
-Todo: break things down into smaller components
+Todo: 
+* Remove a bunch of files left over from the starter project that are not doing anything
+* Break things down into smaller components
+* Add icons
+* Meditate 
+* Breathe
+* Laydown 
+* Relax
+* Go to sleep
 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b654c94e-08a6-4b79-b443-7837581b1d8d/deploy-status)](https://app.netlify.com/sites/gatsby-starter-netlify-cms-ci/deploys)
