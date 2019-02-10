@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import {
   Box,
@@ -19,7 +19,9 @@ const SetingsComponent = (props) => {
     slowDownLongWords,
     setSlowDownLongWords,
     pauseAfterPeriod,
-    setPauseAfterPeriod
+    setPauseAfterPeriod,
+    pauseForHyphens,
+    setPauseForHyphens,
    } = props
 
   return(
@@ -31,10 +33,11 @@ const SetingsComponent = (props) => {
         { name: 'input-speedup-small-words', start: [0, 1], end: [1, 1] },
         { name: 'input-slowdown-long-words', start: [0, 2], end: [1, 2] },
         { name: 'input-pause-after-period', start: [0, 3], end: [1, 3] },
+        { name: 'input-pause-for-hypens', start: [0, 4], end: [1, 4] },
       ]}
       columns={['xsmall', 'small']}
       fill
-      rows={['flex', 'flex', 'flex', 'flex']}
+      rows={['flex', 'flex', 'flex', 'flex', 'flux']}
       gap='small'
       margin='small'
     >
@@ -61,7 +64,7 @@ const SetingsComponent = (props) => {
 
       <Box gridArea='input-slowdown-long-words'>
         <CheckBox
-          label='Slow down long words'
+          label='Slow longer words'
           checked={slowDownLongWords}
           onChange={() => setSlowDownLongWords(!slowDownLongWords) }
         />
@@ -69,11 +72,20 @@ const SetingsComponent = (props) => {
 
       <Box gridArea='input-pause-after-period'>
         <CheckBox
-          label="Pause after period's `.`"
+          label="Slow after periods `.`"
           checked={pauseAfterPeriod}
           onChange={() => setPauseAfterPeriod(!pauseAfterPeriod) }
         />
       </Box>
+
+      <Box gridArea='input-pause-for-hypens'>
+        <CheckBox
+          label="Slow hyphenated words"
+          checked={pauseForHyphens}
+          onChange={() => setPauseForHyphens(!pauseForHyphens) }
+        />
+      </Box>
+
     </Grid>
    )
 }

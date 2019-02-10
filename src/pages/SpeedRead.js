@@ -3,20 +3,12 @@ import useInterval from '../hooks/use-interval'
 import Settings from './Settings'
 import Modal from './Modal'
 
-import {
-  Box,
-  Button,
-  Layer,
-  Text,
-  Heading,
-  Grid,
-  Meter,
-} from 'grommet'
+import { Button, Grid } from 'grommet'
 
-const defaultDelay = 300;
+
 const SpeedRead = (props) => {
   const { pastedText } = props
-
+  const defaultDelay = 300
   let [count, setCount] = useState(0)
   let [displayWord, setDisplayWord] = useState('')
   let [showModal, setShowModal] = useState(false)
@@ -28,8 +20,9 @@ const SpeedRead = (props) => {
   const [speedUpSmallWords, setSpeedUpSmallWords] = useState(true)
   const [slowDownLongWords, setSlowDownLongWords] = useState(true)
   const [pauseAfterPeriod, setPauseAfterPeriod] = useState(true)
+  const [pauseForHyphens, setPauseForHyphens] = useState(true)
 
-  const pastedTextArray = pastedText ? pastedText.split(' ') : '';
+  const pastedTextArray = pastedText ? pastedText.split(' ') : ''
   const wordCount = pastedTextArray.length
 
   useInterval(() => {
@@ -38,15 +31,17 @@ const SpeedRead = (props) => {
       setDisplayWord(word)
       setCount(count + 1)
 
-      if(word.includes('-') || word.includes('—')) {
-        setDelay(userDelay * 2)
-      } else if(speedUpSmallWords && word.length <= 3) {
-        setDelay(userDelay - Math.round(userDelay / 3));
-      } else if(slowDownLongWords && word.length > 7) {
-        setDelay(userDelay + Math.round(userDelay / 3))
+      const adjustDelay = Math.round(userDelay / 3)
+
+      if(speedUpSmallWords && word.length <= 3) {
+        setDelay(userDelay - adjustDelay)
+      } else if((slowDownLongWords && word.length > 7)) {
+        setDelay(userDelay + adjustDelay)
       } else if(pauseAfterPeriod && word.split('').pop() === '.') {
-        setDelay(userDelay + Math.round(userDelay / 3))
-      }else if(delay !== userDelay){
+        setDelay(userDelay + adjustDelay)
+      } else if(pauseForHyphens && (word.includes('-') || word.includes('—'))) {
+        setDelay(userDelay + adjustDelay)
+      } else if(delay !== userDelay) {
         setDelay(userDelay)
       }
 
@@ -105,6 +100,9 @@ const SpeedRead = (props) => {
 
         pauseAfterPeriod={pauseAfterPeriod}
         setPauseAfterPeriod={setPauseAfterPeriod}
+
+        pauseForHyphens={pauseForHyphens}
+        setPauseForHyphens={setPauseForHyphens}
       />
 
       <Modal

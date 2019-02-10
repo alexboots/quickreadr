@@ -2,11 +2,9 @@ import React from 'react'
 
 import {
   Box,
-  Button,
   Layer,
   Text,
   Heading,
-  Grid,
   Meter,
 } from 'grommet'
 
