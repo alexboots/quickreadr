@@ -91,6 +91,26 @@ const SetingsComponent = (props) => {
 }
 
 const Settings = (props) => {
+  function saveSettings (props) {
+    const {
+      userDelay,
+      speedUpSmallWords,
+      slowDownLongWords,
+      pauseAfterPeriod,
+      pauseForHyphens,
+    } = props
+
+    const settings = JSON.stringify({
+      userDelay,
+      speedUpSmallWords,
+      slowDownLongWords,
+      pauseAfterPeriod,
+      pauseForHyphens,
+    })
+
+    localStorage.setItem('settings', settings)
+  }
+
   return(
     <DropButton
       label="Settings"
@@ -98,6 +118,7 @@ const Settings = (props) => {
       dropContent={
         <SetingsComponent {...props} />
       }
+      onClose={() => saveSettings(props) }
     />
   )
 }

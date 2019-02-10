@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import useInterval from '../hooks/use-interval'
 import Settings from './Settings'
 import Modal from './Modal'
@@ -9,6 +9,7 @@ import { Button, Grid } from 'grommet'
 const SpeedRead = (props) => {
   const { pastedText } = props
   const defaultDelay = 300
+
   let [count, setCount] = useState(0)
   let [displayWord, setDisplayWord] = useState('')
   let [showModal, setShowModal] = useState(false)
@@ -22,8 +23,24 @@ const SpeedRead = (props) => {
   const [pauseAfterPeriod, setPauseAfterPeriod] = useState(true)
   const [pauseForHyphens, setPauseForHyphens] = useState(true)
 
+  let [mounted, setMounted] = useState(false)
+
   const pastedTextArray = pastedText ? pastedText.split(' ') : ''
   const wordCount = pastedTextArray.length
+
+  useEffect(() => {
+    if(!mounted) {
+      setMounted(true)
+      const settings = JSON.parse(localStorage.getItem('settings'))
+      if(settings) {
+        setUserDelay(settings.userDelay)
+        setSpeedUpSmallWords(settings.speedUpSmallWords)
+        setSlowDownLongWords(settings.slowDownLongWords)
+        setPauseAfterPeriod(settings.pauseAfterPeriod)
+        setPauseForHyphens(settings.pauseForHyphens)
+      }
+    }
+  })
 
   useInterval(() => {
     if(isRunning && count < wordCount) {
