@@ -8,7 +8,7 @@ import {
 } from 'grommet'
 
 const ReadSpeed = (props) => {
-  const { delay, handleDelayChange } = props
+  const { userDelay, handleDelayChange } = props
 
   return(
     <Grid
@@ -24,7 +24,7 @@ const ReadSpeed = (props) => {
     >
       <Box gridArea='input-readspead'>
         <TextInput
-          value={delay}
+          value={userDelay}
           onChange={(e) => handleDelayChange(e) }
         />
       </Box>

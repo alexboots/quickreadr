@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import Settings from './Settings'
 import useInterval from '../hooks/use-interval'
+import Settings from './Settings'
+import Modal from './Modal'
 
 import {
   Box,
@@ -27,13 +28,6 @@ const SpeedRead = (props) => {
   const pastedTextArray = pastedText ? pastedText.split(' ') : '';
   const wordCount = pastedTextArray.length
 
-  function handleDelayChange(e) {
-    const input = Number(e.target.value)
-    if(isNaN(input) || input > 100000) return
-    setDelay(input)
-    setUserDelay(input)
-  }
-
   useInterval(() => {
     if(isRunning && count < wordCount) {
       const word = pastedTextArray[count]
@@ -43,8 +37,8 @@ const SpeedRead = (props) => {
       if(word.includes('-') || word.includes('—')) {
         setDelay(delay * 2)
       } else if(word.split('').pop() === '.' || word.length > 7) {
-        setDelay(delay + Math.round(delay / 3))
-      } else {
+        setDelay(delay + Math.round(delay / 4))
+      } else if(delay !== userDelay){
         setDelay(userDelay)
       }
 
@@ -52,6 +46,13 @@ const SpeedRead = (props) => {
       finishedReading()
     }
   }, isRunning ? delay : null)
+
+  function handleDelayChange(e) {
+    const input = Number(e.target.value)
+    if(isNaN(input) || input > 100000) return
+    setDelay(input)
+    setUserDelay(input)
+  }
 
   function handleRead () {
     setDisplayWord(pastedTextArray[0])
@@ -83,45 +84,19 @@ const SpeedRead = (props) => {
         onClick={() => handleRead()}
       />
 
-      <Settings delay={ delay } handleDelayChange={ handleDelayChange } />
+      <Settings
+        delay={delay}
+        userDelay={userDelay}
+        handleDelayChange={ handleDelayChange }
+      />
 
-      {showModal &&
-        <Layer
-          position="center"
-          modal
-          size='full'
-          onClickOutside={onClose}
-          onEsc={onClose}
-        >
-          <Box
-            pad="large"
-            gap="small"
-            width="large"
-            height="medium"
-            align="center"
-            justify="center"
-          >
-            <Text
-              color="black"
-              onClick={onClose}
-              style={{ cursor: 'pointer', position: 'fixed', top: '12px', right: '16px' }}
-            >
-              <strong>✖</strong>
-            </Text>
-
-            <Heading> { displayWord } </Heading>
-
-          </Box>
-            <Meter
-              size='full'
-              thickness='xsmall'
-              background='light-6'
-              style={{ position: 'absolute', bottom: '0', left: '0', right: '0' }}
-              values={[{ value: count / wordCount * 100, color: 'dark-6', }]}
-              aria-label="meter"
-            />
-        </Layer>
-      }
+      <Modal
+        displayWord={displayWord}
+        onClose={onClose}
+        wordCount={wordCount}
+        showModal={showModal}
+        count={count}
+      />
     </Grid>
   )
 }
