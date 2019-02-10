@@ -96,6 +96,7 @@ const SpeedRead = (props) => {
       align='center'
       columns={[['xsmall', 'small'], ['xsmall', 'small']]}
       gap='medium'
+      margin='large'
     >
       <Button
         disabled={pastedTextArray.length === 0}
