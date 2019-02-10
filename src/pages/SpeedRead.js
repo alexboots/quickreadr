@@ -94,7 +94,7 @@ const SpeedRead = (props) => {
     <Grid
       alignContent='center'
       align='center'
-      columns={['small', 'small']}
+      columns={[['xsmall', 'small'], ['xsmall', 'small']]}
       gap='medium'
     >
       <Button
