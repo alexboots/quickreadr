@@ -25,6 +25,10 @@ const SpeedRead = (props) => {
   let [delay, setDelay] = useState(defaultDelay)
   let [userDelay, setUserDelay] = useState(defaultDelay)
 
+  const [speedUpSmallWords, setSpeedUpSmallWords] = useState(true)
+  const [slowDownLongWords, setSlowDownLongWords] = useState(true)
+  const [pauseAfterPeriod, setPauseAfterPeriod] = useState(true)
+
   const pastedTextArray = pastedText ? pastedText.split(' ') : '';
   const wordCount = pastedTextArray.length
 
@@ -35,10 +39,14 @@ const SpeedRead = (props) => {
       setCount(count + 1)
 
       if(word.includes('-') || word.includes('—')) {
-        setDelay(delay * 2)
-      } else if(word.split('').pop() === '.' || word.length > 7) {
-        setDelay(delay + Math.round(delay / 4))
-      } else if(delay !== userDelay){
+        setDelay(userDelay * 2)
+      } else if(speedUpSmallWords && word.length <= 3) {
+        setDelay(userDelay - Math.round(userDelay / 3));
+      } else if(slowDownLongWords && word.length > 7) {
+        setDelay(userDelay + Math.round(userDelay / 3))
+      } else if(pauseAfterPeriod && word.split('').pop() === '.') {
+        setDelay(userDelay + Math.round(userDelay / 3))
+      }else if(delay !== userDelay){
         setDelay(userDelay)
       }
 
@@ -74,7 +82,7 @@ const SpeedRead = (props) => {
     <Grid
       alignContent='center'
       align='center'
-      columns={['xsmall', 'small']}
+      columns={['small', 'small']}
       gap='medium'
     >
       <Button
@@ -88,6 +96,15 @@ const SpeedRead = (props) => {
         delay={delay}
         userDelay={userDelay}
         handleDelayChange={ handleDelayChange }
+
+        speedUpSmallWords={speedUpSmallWords}
+        setSpeedUpSmallWords={setSpeedUpSmallWords}
+
+        slowDownLongWords={slowDownLongWords}
+        setSlowDownLongWords={setSlowDownLongWords}
+
+        pauseAfterPeriod={pauseAfterPeriod}
+        setPauseAfterPeriod={setPauseAfterPeriod}
       />
 
       <Modal
