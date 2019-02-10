@@ -124,6 +124,8 @@ const SpeedRead = (props) => {
       />
 
       <Modal
+        isRunning={isRunning}
+        setIsRunning={setIsRunning}
         displayWord={displayWord}
         onClose={onClose}
         wordCount={wordCount}
