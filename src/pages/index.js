@@ -28,7 +28,7 @@ const IndexPage = (props) => {
           ]}
           columns={['small']}
           fill
-          rows={['flex', 'xsmall','small']}
+          rows={['flex', 'xsmall','large']}
           gap='xxsmall'
           justify='center'
         >
@@ -48,10 +48,11 @@ const IndexPage = (props) => {
           <Box
             gridArea='main'
             fill
-            height='medium'
+            pad='large'
           >
             <TextArea
-              fill={true}
+              style={{ minHeight: '300px' }}
+              resize={true}
               value={pastedText}
               placeholder='Paste text here'
               onChange={(e) => handlePasteText(e)}
