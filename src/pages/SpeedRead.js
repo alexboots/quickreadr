@@ -5,7 +5,6 @@ import Modal from './Modal'
 
 import { Button, Grid } from 'grommet'
 
-
 const SpeedRead = (props) => {
   const { pastedText } = props
   const defaultDelay = 300
@@ -25,7 +24,12 @@ const SpeedRead = (props) => {
 
   let [mounted, setMounted] = useState(false)
 
-  const pastedTextArray = pastedText ? pastedText.split(' ') : ''
+  function formatWordsArray(pastedText) {
+    // replace new lines with spaces and split into array
+    return pastedText ? pastedText.replace(/(?:\r\n|\r|\n)/g, ' ').split(' ') : ''
+  }
+
+  const pastedTextArray = formatWordsArray(pastedText)
   const wordCount = pastedTextArray.length
 
   useEffect(() => {

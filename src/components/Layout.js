@@ -11,6 +11,11 @@ const quickreadrTheme = {
     },
   },
   layer: {
+    small: {
+      borderSize: {
+        xlarge: '300px'
+      }
+    },
     overlay: {
       background: "rgba(58, 58, 58, 1)"
     }
