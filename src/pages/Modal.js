@@ -54,7 +54,7 @@ const Modal = (props) => {
               alignSelf='center'
               label={ isRunning ? '||' : '>'}
               size='small'
-              style={{ marginTop: '30px' }}
+              style={{ position: 'absolute', marginTop: '100px' }}
               onClick={() => setIsRunning(!isRunning)}
             />
           </Box>

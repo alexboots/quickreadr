@@ -25,10 +25,11 @@ const IndexPage = (props) => {
             { name: 'header', start: [0, 0], end: [1, 0] },
             { name: 'btn-read', start: [0, 1], end: [1, 1] },
             { name: 'main', start: [0, 2], end: [1, 2] },
+            { name: 'ios-tip', start: [0, 3], end: [1, 3] },
           ]}
           columns={['small']}
           fill
-          rows={['flex', 'xsmall','large']}
+          rows={['xsmall', 'xsmall','flex', 'flex']}
           gap='xxsmall'
           justify='center'
         >
