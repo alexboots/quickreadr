@@ -5,13 +5,14 @@ Speed reading site built with [React](https://reactjs.org/) + [gatsby](https://w
 Live: https://readquickr.com/
 I bought the wrong url so thats why the repo is quickreadr and the url is readquickr
 
-Todo: 
-* Remove a bunch of files left over from the starter project that are not doing anything
+Todo:
 * Break things down into smaller components
+* Add ability to scroll back through text
+* Save text feature? (could save text to localhost display saved articles)
 * Add icons
-* Meditate 
-* Breathe
-* Laydown 
+* Meditate
+* Breath
+* Laydown
 * Relax
 * Go to sleep
 
