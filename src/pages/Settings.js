@@ -49,8 +49,10 @@ const SetingsComponent = (props) => {
       <Box
         justify='center'
         gridArea='text-readspeed'
+        style={{ margin: '10px 0 0 -10px' }}
       >
-        <Text size='medium'>Word Speed (ms)</Text>
+        <Text size='small'>Milliseconds between words</Text>
+        <Text size='xsmall'>(smaller number = faster)</Text>
       </Box>
 
       <Box gridArea='input-speedup-small-words' style={{padding: '0 10px 0 10px' }}>
